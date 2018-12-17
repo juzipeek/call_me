@@ -1,0 +1,97 @@
+consumes:
+- application/json
+- application/xml
+- application/gob
+- application/x-gob
+definitions:
+  CallMePayLoad:
+    example:
+      age: 5.038983524148614e+18
+      gender: Consequatur ipsum facere sunt repellendus tempora.
+      name: Cumque amet dolorem debitis aut molestias sint.
+      phone_no: Enim voluptatem non ad eum voluptatem assumenda.
+    properties:
+      age:
+        description: your age
+        example: 5.038983524148614e+18
+        format: int64
+        type: integer
+      gender:
+        description: your gender, male or female
+        example: Consequatur ipsum facere sunt repellendus tempora.
+        type: string
+      name:
+        description: your name
+        example: Cumque amet dolorem debitis aut molestias sint.
+        type: string
+      phone_no:
+        description: your phone no.
+        example: Enim voluptatem non ad eum voluptatem assumenda.
+        type: string
+    title: CallMePayLoad
+    type: object
+  SayHiMedia:
+    description: just say hi (default view)
+    example:
+      my_age: 3.281003875470811e+18
+      my_name: Id voluptatibus est repellat blanditiis provident iusto.
+      my_phone: Quia aliquam qui illo quidem placeat ipsum.
+    properties:
+      my_age:
+        description: my age
+        example: 3.281003875470811e+18
+        format: int64
+        type: integer
+      my_name:
+        description: my name
+        example: Id voluptatibus est repellat blanditiis provident iusto.
+        type: string
+      my_phone:
+        description: my phone no,call me now.
+        example: Quia aliquam qui illo quidem placeat ipsum.
+        type: string
+    title: 'Mediatype identifier: application/vnd.call_me.bottle; view=default'
+    type: object
+host: localhost
+info:
+  title: call_me
+  version: "0.1"
+paths:
+  /meet/{uid}:
+    get:
+      operationId: call_me#dial
+      parameters:
+      - in: path
+        name: uid
+        required: true
+        type: integer
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/CallMePayLoad'
+      produces:
+      - application/vnd.call_me.bottle
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/SayHiMedia'
+      schemes:
+      - http
+      summary: dial call_me
+      tags:
+      - call_me
+produces:
+- application/json
+- application/xml
+- application/gob
+- application/x-gob
+responses:
+  OK:
+    description: OK
+    schema:
+      $ref: '#/definitions/SayHiMedia'
+schemes:
+- http
+swagger: "2.0"
