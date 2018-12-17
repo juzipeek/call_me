@@ -9,7 +9,7 @@ var _ = API("call_me", func() {
 	Title("call_me")
 	Version("0.1")
 	Scheme("http")
-	Host("zzz.localhost")
+	Host("localhost")
 })
 
 var _ = Resource("call_me", func() {

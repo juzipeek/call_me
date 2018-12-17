@@ -25,12 +25,12 @@ func (c *CallMeController) Dial(ctx *app.DialCallMeContext) error {
 	//entry := goalogrus.Entry(ctx)
 	//entry.Infof("Dail action uid:%d", ctx.UID)
 	
-	goalogrus.Entry(ctx).Info("Dail action uid:", ctx.UID)
+	goalogrus.Entry(ctx).Info("Dial action uid:", ctx.UID)
 	
 	res := &app.SayHiMedia{}
 	age := 18
 	name := "MayBe"
-	phone := "13240892638"
+	phone := "13288882638"
 	
 	res.MyAge = &age
 	res.MyName = &name
