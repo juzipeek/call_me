@@ -65,6 +65,18 @@ curl -i -X GET \
     -H 'Content-Type: application/json' \
     -d '{"name":"Beauty","age":18,"gender":"male","phone_no":"132xxxx2638"}' \
     "http://localhost:8080/meet/1"
+
+# 压力测试
+ab -n 1000 -c 10 \
+    -p call_me.json -m GET \
+    -T application/json \
+    -H "X-CallMeHeader:Test" \
+    -H "Content-Type: application/json" \
+    "http://localhost:8080/meet/1"
+```
+`call_me.json` 中上报内容：
+```json
+{"name":"zhoucj","age":18,"gender":"male","phone_no":"13288882638"}
 ```
 
 ## 项目链接
